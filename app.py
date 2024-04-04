@@ -1,8 +1,8 @@
-from ultralytics import RTDETR
-import cv2
-import io
-from PIL import Image
-from flask import Flask, request, redirect, url_for,send_file
+# from ultralytics import RTDETR
+# import cv2
+# import io
+# from PIL import Image
+from flask import Flask, request,send_file
 from flask_cors import CORS
 
 app = Flask(__name__)
