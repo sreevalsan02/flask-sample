@@ -24,8 +24,8 @@ def get_model():
         if model is None:
             from ultralytics import RTDETR
             model = RTDETR('best.pt')
-        return model
-    return inner
+        
+    return model
 
 @app.route('/upload', methods=['GET', 'POST'])
 def table_image():
