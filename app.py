@@ -1,5 +1,6 @@
 from flask import Flask, request, send_file
 from flask_cors import CORS
+from ultralytics import RTDETR
 import io
 from PIL import Image
 
@@ -15,20 +16,12 @@ def hello():
 def message():
     return "hi message"
 
-
-# Lazy loading for the object detection model
-def get_model():
-  from ultralytics import RTDETR
-  model = RTDETR('best.pt')
-  return model
-
 @app.route('/upload', methods=['GET', 'POST'])
 def table_image():
     if request.method == 'POST':
         img_file = request.files['the_file']
 
-        # Use lazy-loaded model
-        model = get_model()()
+        model = RTDETR('best.pt')
 
         img = Image.open(img_file)
         results = model(img)
