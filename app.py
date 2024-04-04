@@ -18,14 +18,9 @@ def message():
 
 # Lazy loading for the object detection model
 def get_model():
-    model = None
-    def inner():
-        nonlocal model
-        if model is None:
-            from ultralytics import RTDETR
-            model = RTDETR('best.pt')
-        
-    return model
+  from ultralytics import RTDETR
+  model = RTDETR('best.pt')
+  return model
 
 @app.route('/upload', methods=['GET', 'POST'])
 def table_image():
